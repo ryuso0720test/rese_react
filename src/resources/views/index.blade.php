@@ -1,20 +1,36 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_','-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+@endsection
 
-    <title>環境構築</title>
-    @viteReactRefresh
-    @vite([
-        'resources/css/app.css',
-        'resources/scss/app.scss',
-        'resources/ts/index.tsx',
-    ])
-</head>
-<body>
-    <div id="app">
-    </div>
-</body>
-</html>
+@section('content')
+<div class="attendance__alert">
+  // メッセージ機能
+</div>
+
+<div class="attendance__content">
+  <div class="attendance__panel">
+    <form class="attendance__button">
+      <button class="attendance__button-submit" type="submit">勤務開始</button>
+    </form>
+    <form class="attendance__button">
+      <button class="attendance__button-submit" type="submit">勤務終了</button>
+    </form>
+  </div>
+  <div class="attendance-table">
+    <table class="attendance-table__inner">
+      <tr class="attendance-table__row">
+        <th class="attendance-table__header">名前</th>
+        <th class="attendance-table__header">開始時間</th>
+        <th class="attendance-table__header">終了時間</th>
+      </tr>
+      <tr class="attendance-table__row">
+        <td class="attendance-table__item">サンプル太郎</td>
+        <td class="attendance-table__item">サンプル</td>
+        <td class="attendance-table__item">サンプル</td>
+      </tr>
+    </table>
+  </div>
+</div>
+@endsection

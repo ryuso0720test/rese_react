@@ -1,0 +1,58 @@
+.formContainer {
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formContainer form {
+    background-color: white;
+    width: 50%;
+    max-width: 450px;
+    border-radius: 10px;
+}
+
+.formContainer h1 {
+    background-color: #0d53e6;
+    margin: 0%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: medium;
+    padding: 15px;
+    color: white;
+}
+
+.uiForm {
+    padding: 20px;
+}
+
+.formField {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.formField input {
+    width: 100%;
+    margin-left: 10px;
+    border: 0;
+    border-bottom: 1px solid #1b2538;
+    background-color: transparent;
+}
+.formField input:focus {
+    outline: none;
+}
+
+.submitButton {
+    margin: 0 auto;
+    margin-right: 0;
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+    color: white;
+    background-color: #0d53e6;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}

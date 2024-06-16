@@ -1,0 +1,92 @@
+body {
+    background-color: #e3e6e8;
+}
+
+.toggleButon {
+    appearance: none;
+    border: none;
+    background: #0d53e6;
+    outline: none;
+    border-radius: 0;
+    letter-spacing: inherit;
+    cursor: pointer;
+}
+
+.header-title {
+    color: #0d53e6;
+}
+
+.header {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    padding: 30px;
+    z-index: 999;
+}
+
+.toggleButon {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.toggleButon>span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+}
+
+.line-1 {
+    transform: translate(0, -10px);
+}
+
+.line-2 {
+    transform: translate(0, 10px);
+}
+
+.toggleButon[aria-expanded="true"]>.line-1 {
+    transform: translate(0, 0) rotate(-45deg);
+}
+
+.toggleButon[aria-expanded="true"]>.line-2 {
+    transform: translate(0, 0) rotate(45deg);
+}
+
+.navigation {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5rem 2rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    background-color: white;
+}
+
+.navigation[aria-hidden="false"] {
+    display: flex;
+}
+
+.navigation>ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem 0;
+}
+
+.navigation>ul>li {
+    text-align: center;
+}
