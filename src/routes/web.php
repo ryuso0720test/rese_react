@@ -2,13 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\loginController;
+use App\Http\Controllers\ShopController;
 
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index']);
 });
 
-Route::post('/register', [UsersController::class, 'store']);
-Route::get('/logout', [loginController::class, 'destroy']);
+Route::get('/detail', [ShopController::class, 'detail']);
+
+// Route::post('/register', [UsersController::class, 'store']);
+// Route::post('/logout', [UsersController::class, 'delete']);

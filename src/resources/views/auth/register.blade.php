@@ -1,15 +1,36 @@
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<link rel="stylesheet" href="{{ asset('css/register.css') }}">
-<script src="https://kit.fontawesome.com/39f2a58ce1.js"
-crossorigin="anonymous"></script>
-@yield('css')
-@viteReactRefresh
-    @vite([
-        'resources/ts/screen/register_page.tsx',
-    ])
-
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+@endsection
+
 @section('content')
-<div id="register-content"></div>
+<div class='formContainer'>
+    <form class="form" method="post" action="/register">
+        @csrf
+        <h1>Register</h1>
+        <div class="uiForm">
+            <div class="formField">
+                <label>
+                    <i class="fas fa-user"></i>
+                </label>
+                <input type="text" placeholder='username' name='name' />
+            </div>
+            <div class="formField">
+                <label>
+                    <i class="fas fa-envelope"></i>
+                </label>
+                <input type="email" placeholder='Email' name='email' value="{{ old('email') }}" />
+            </div>
+            <div class="formField">
+                <label>
+                    <i class="fas fa-unlock-alt"></i>
+                </label>
+                <input type="password" placeholder='Password' name='password' value="{{ old('password') }}" />
+            </div>
+            <button class="submitButton">登録</button>
+        </div>
+    </form>
+</div>
+
 @endsection

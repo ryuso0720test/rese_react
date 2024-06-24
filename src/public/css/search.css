@@ -1,0 +1,26 @@
+.search-content {
+    
+}
+
+.search-form {
+    width: 100%;
+}
+
+.search-content input {
+    border: none;
+    height: 30px;
+    width: 30%;
+    
+}
+.search__area {
+    border: none;
+    height: 30px;
+    border-right: solid 1px #d1cdcd;
+}
+
+.icon {
+    height: 30px;
+    background-color: white;
+    color: rgb(211, 211, 205);
+    margin-left: 2px;
+}

@@ -9,19 +9,28 @@
   <title>Attendance Management</title>
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
+  <script src="https://kit.fontawesome.com/39f2a58ce1.js" crossorigin="anonymous"></script>
   @yield('css')
   @viteReactRefresh
-    @vite([
-        'resources/ts/screen/header.tsx',
-    ])
+  @vite([
+  'resources/ts/screen/header.tsx',
+  'resources/ts/components/Search.tsx',
+  ])
 </head>
 
 <body>
   <header class="header">
-    <div id="header"></div>
-    <h1 class="header-title">Rase</h1>
+    <div class="header-left">
+      <div id="header"></div>
+      <h1 class="header-title">Rase</h1>
+    </div>
+    @if (Auth::check())
+    <div class="header-right">
+      <div id="search"></div>
+    </div>
+    @endif
   </header>
-  
+
 
   <main>
     @yield('content')

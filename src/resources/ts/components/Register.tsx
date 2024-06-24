@@ -9,7 +9,7 @@ function Register() {
   const initialValues = { name: "", email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     // console.log(e.target.value);
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
