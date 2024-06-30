@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Area;
+use Illuminate\Support\Facades\Log;
 
 class AreaController extends Controller
 {

@@ -12,21 +12,19 @@ type AreaList = {
   name: string
 }
 
-const http = axios.create({
-    baseURL: 'http://localhost/',
-    withCredentials: true,
-});
-
 const Item = () => {
 
     const [shops, setShops] = useState([]);
     const [areas, setAreas] = useState([]);
     const [categories, setCategories] = useState([]);
-    const [areaList, setAreaList] = useState<AreaList | null>(null)
+    const [likes, setLike] = useState([]);
+    const [userId, setUserId] = useState();
+
+    
 
     // shops取得API
     const getShops = async () => {
-        const response = await fetch('http://localhost/api/shops');
+        const response = await fetch('/api/shops');
         const json = await response.json();
         setShops(json.data);
     }
@@ -36,7 +34,6 @@ const Item = () => {
         const json = await response.json();
         // console.log(json.data);
         setAreas(json.data);
-        setAreaList(json.data);
     }
     // category取得API
     const getCategories = async () => {
@@ -45,10 +42,35 @@ const Item = () => {
         setCategories(json.data);
     }
 
+    const getLike = async () => {
+        const response = await fetch('http://localhost/api/likes');
+        const json = await response.json();
+        setCategories(json.data);
+    }
+
+    const fetchAuthUser = async () => {
+        // const response = await fetch('http://localhost/api/userId');
+        // console.log('通信成功');
+        axios.get('/api/user').then(response => {
+            console.log('通信成功');
+            console.log(response.data);
+            setUserId(response.data);
+            })
+            .catch(() => {
+                console.log('通信に失敗しました');
+            });
+    }
+
+    const handleClick = () => {
+        getLike();
+    };
+
+
     useEffect(() => {
         getShops();
         getCategories();
         getAreas();
+        fetchAuthUser();
     }, []);
     
 
@@ -83,7 +105,7 @@ const Item = () => {
                                 <form action="/detail/" method="get">
                                     <button className="detail" >詳しくみる</button>
                                 </form>
-                                <MdFavoriteBorder size="1.8em" />
+                                <MdFavoriteBorder onClick={handleClick} size="1.8em" />
                              </div>
                         </div>
                     </div>
