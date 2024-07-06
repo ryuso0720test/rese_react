@@ -6,25 +6,46 @@ import { MdFavorite } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Area from './Area';
+import Like from './Like';
 
-type AreaList = {
-  id: number
-  name: string
-}
+const http = axios.create({
+    baseURL: 'http://localhost:80/',
+    withCredentials: true,
+    withXSRFToken: true,
+});
 
 const Item = () => {
 
     const [shops, setShops] = useState([]);
     const [areas, setAreas] = useState([]);
     const [categories, setCategories] = useState([]);
-    const [likes, setLike] = useState([]);
     const [userId, setUserId] = useState();
 
-    
+    const metaCsrfToken = document.head.querySelector("meta[name='csrf-token']") as HTMLMetaElement;
+
+
+    const csrfToken = useRef<string>(metaCsrfToken.content);
+
+    const updateLike = async (shopId: number) => {
+        const requestBody = {
+            user_id: userId,
+            shop_id: shopId,
+        };
+        http.post("/api/likeUp", requestBody, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(() => {
+            console.log('お気に入り更新成功');
+            getShops();
+        }).catch(function (error) {
+            console.log('お気に入り更新失敗');
+        })
+    }
 
     // shops取得API
     const getShops = async () => {
-        const response = await fetch('/api/shops');
+        const response = await fetch('/api/shops/');
         const json = await response.json();
         setShops(json.data);
     }
@@ -42,37 +63,30 @@ const Item = () => {
         setCategories(json.data);
     }
 
-    const getLike = async () => {
-        const response = await fetch('http://localhost/api/likes');
-        const json = await response.json();
-        setCategories(json.data);
-    }
-
     const fetchAuthUser = async () => {
-        // const response = await fetch('http://localhost/api/userId');
-        // console.log('通信成功');
         axios.get('/api/user').then(response => {
             console.log('通信成功');
-            console.log(response.data);
-            setUserId(response.data);
+            console.log(response.data.data);
+            setUserId(response.data.data);
             })
             .catch(() => {
                 console.log('通信に失敗しました');
             });
     }
 
-    const handleClick = () => {
-        getLike();
+    const handleClick = (shop_id: number) => {
+        updateLike(shop_id);
     };
 
 
     useEffect(() => {
+        fetchAuthUser();
         getShops();
         getCategories();
         getAreas();
-        fetchAuthUser();
+        // getLike();
     }, []);
-    
+    const [isLoggedIn, setLoggedIn] = useState(false);
 
     return (
         <ul>
@@ -105,7 +119,28 @@ const Item = () => {
                                 <form action="/detail/" method="get">
                                     <button className="detail" >詳しくみる</button>
                                 </form>
-                                <MdFavoriteBorder onClick={handleClick} size="1.8em" />
+                                { 
+                                    (() => {
+                                        if (shop.like ) {
+                                            return (
+                                                <button className="likeBtn"
+                                                onClick={() => handleClick(shop.id)}
+                                                >
+                                                    <MdFavorite  size="1.8em" />
+                                                </button>
+
+                                            );
+                                        } else {
+                                            return (
+                                            <button className="likeBtn"
+                                                onClick={() => handleClick(shop.id)}>
+                                                <MdFavoriteBorder size="1.8em" />
+                                            </button>
+                                            )
+
+                                        }
+                                    })()
+                                }
                              </div>
                         </div>
                     </div>
