@@ -12,15 +12,18 @@ body {
     cursor: pointer;
 }
 
-.header-title {
+.title {
     color: #0d53e6;
+    position: absolute;
+    line-height: 0px;
+    margin-bottom: 20px;
+    width: 200px;
+    left:  40px;
 }
 
 .header {
     position: relative;
     display: flex;
-    justify-content: space-between;
-    padding: 30px;
     z-index: 999;
 }
 

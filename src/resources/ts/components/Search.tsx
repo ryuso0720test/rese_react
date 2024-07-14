@@ -1,11 +1,12 @@
-import { createRoot } from 'react-dom/client';
-import React from 'react';
+
 import "../../../public/css/search.css";
 import { CiSearch } from "react-icons/ci";
+import "../../../public/css/app.css";
 
-const headerElement = createRoot(document.getElementById('search') as HTMLElement);
+const Search = () => {
 
-headerElement.render(
+
+  return (
     <>
         <form className="search-form" action="/search" method="post">
             <div className="search-content">
@@ -19,5 +20,7 @@ headerElement.render(
                 <input type="search" name="search" placeholder="キーワードを入力" />
             </div>
         </form>
-    </>,
-)
+    </>
+  )
+};
+export default Search;

@@ -1,26 +1,22 @@
 import { createRoot } from 'react-dom/client';
-// import React from 'react';
-// import App from './App';
+import React from 'react';
+import Item from './components/Items';
+import { AppRoutes } from './Routes';
+import { BrowserRouter } from 'react-router-dom'
 
-// const root = createRoot(document.getElementById('app') as HTMLElement);
-// root.render(
-//     <React.StrictMode>
-//         <App />
-//     </React.StrictMode>
-// );
+const headerElement = createRoot(document.getElementById('contents') as HTMLElement);
 
-import React from "react";
-import Login from './components/Login';
-// import title from './components/title';
-const root = createRoot(document.getElementById('app') as HTMLElement);
 
-root.render(
+
+headerElement.render(
+    // <>
+    //     <div className="items">
+    //         <Item />
+    //     </div >
+    // </>
     <React.StrictMode>
-        <Login />
-        <h1>qqqqqq</h1>
-        <div>
-            <title />
-        </div>
-
+        <BrowserRouter>
+            <AppRoutes />
+        </BrowserRouter>
     </React.StrictMode>
 )

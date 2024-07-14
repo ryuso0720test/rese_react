@@ -19,6 +19,7 @@ const Header: FC = () => {
         onClick={toggleFunction}
       />
       <Navigation id="navigation" open={open} />
+      <h1 className='title'>Rese</h1>
     </header>
   );
 };

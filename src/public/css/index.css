@@ -3,13 +3,13 @@
     
 }
 
-.items ul {
+.shop-list {
     display: flex;
     list-style: none;
     flex-wrap: wrap;
 }
 
-.items li {
+.shop-item {
     margin: 10px;
 }
 

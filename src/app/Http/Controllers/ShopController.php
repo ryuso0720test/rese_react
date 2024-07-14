@@ -2,62 +2,61 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Shop;
+use App\Models\Area;
 use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 
-use function PHPUnit\Framework\isNull;
-
 class ShopController extends Controller
 {
     function index()
     {
-        $shops = Shop::all([
-            'id',
-            'name',
-            'area_id',
-            'category_id',
-            'image',
-        ]);
+        // Log::debug($shops);
+        $shops = DB::table('shops')
+            ->join('areas', 'shops.area_id', '=', 'areas.id')
+            ->join('categories', 'shops.category_id', '=', 'categories.id')
+            ->select(
+                'shops.id',
+                'shops.name',
+                'areas.name as area_name',
+                'categories.name as category_name',
+                'shops.overview',
+                'shops.image'
+            )
+            ->get();
         $userId = Auth::id();
 
-        Log::debug($userId);
+        // $a = DB::table('shops')->with('areas')->get();
 
-        // Log::debug($shops);
+        // Log::debug($a);
+        $shopsData = [];
+        $shopsArray =
+            json_decode(json_encode($shops), true);
 
-        foreach ($shops as $shop) {
-            // Log::debug($shop);
+        foreach ($shopsArray as $shop) {
             $like = NULL;
             $like = Like::query()
                 ->where('user_id', $userId)
                 ->where('shop_id', $shop['id'])
                 ->value('shop_id');
             if ($like != NULL) {
-                Log::debug('値あり');
                 $shop['like'] = $like;
             } else {
-                Log::debug('値なし');
-                $shop['like'] = NULL;
+                $shop['like'] = 0;
             }
-        }
-        Log::debug($shops);
-
-
-        // $likeShop = DB::table('likes')
-        //     ->join('shops', 'likes.shop_id', '=', 'shops.id')
-        //     ->where('user_id', $userId)
-        //     ->get(['shop_id']);
+            array_push($shopsData, $shop);
+        };
 
         return response()->json([
-            'data' => $shops,
+            'data' => $shopsData,
         ],);
     }
 
-    function detail()
+    function detail($id)
     {
-        $shops = Shop::all();
     }
 }

@@ -1,0 +1,139 @@
+.detail-main {
+    display:flex;
+    justify-content: space-between;
+    padding: 30px 70px 50px 70px;
+    margin: 0 auto;
+}
+
+.left {
+    width: 500px;
+}
+
+.right {
+    height: 700px;
+    width: 600px;
+    background-color: #0d53e6;;
+    position: relative;
+}
+
+.info {
+    display: flex;
+    margin-top: 70px;
+}
+
+.back {
+    border: solid 1px black;
+    width: 30px;
+    height: 30px;
+}
+
+.info-image img {
+    width: 100%;
+    height: 350px;
+    background-color: aqua;
+}
+
+.backBtn {
+    width: 100%;
+    height: 100%;
+}
+
+.shop_name {
+    line-height: 0px;
+    margin-left: 10px;
+}
+
+.detail_tag {
+    margin-top: 20px;
+    display: flex;
+}
+
+.detail_text {
+    margin-top: 20px;
+}
+
+.reserve {
+    padding-left: 20px;
+    
+}
+
+.reserve_title {
+    color: white;
+}
+
+.reserve__date {
+    background-color: white;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px 5px 5px 5px;
+}
+.reserve__date-input {
+    width: 100%;
+    border: none;
+}
+.reserve__date-icon {
+    margin-top: 3px;
+}
+
+.reserve__time {
+    background-color: white;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 20px;
+}
+.time-sel {
+    width: 100%;
+    text-decoration: none;
+    border: none;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.reserve__people {
+    background-color: white;
+    width: 80%;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 20px;
+}
+
+.people-sel {
+    width: 100%;
+    text-decoration: none;
+    border: none;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    
+}
+
+.preview {
+    margin-top:20px ;
+    background-color: #4D7FFF;
+    width: 80%;
+    color: white;
+    padding: 20px 20px 20px 20px;
+}
+.preview_table {
+    text-align: left;
+    width: 300px;
+}
+
+
+.res_btn {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 15px 0 15px 0;
+    position: absolute;
+    bottom: 0;
+}

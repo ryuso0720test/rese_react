@@ -15,4 +15,15 @@ class AreaController extends Controller
             'data' => $areas
         ],);
     }
+
+    function getArea($id)
+    {
+        $areaName = Area::query()
+            ->where('id', $id)
+            ->get('name');
+
+        return response()->json([
+            'data' => $areaName
+        ],);
+    }
 }
