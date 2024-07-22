@@ -1,18 +1,20 @@
 .detail-main {
     display:flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 30px 70px 50px 70px;
     margin: 0 auto;
 }
 
 .left {
     width: 500px;
+    margin-right: 20%;
+
 }
 
 .right {
     height: 700px;
     width: 600px;
-    background-color: #0d53e6;;
+    background-color: #0d53e6;
     position: relative;
 }
 

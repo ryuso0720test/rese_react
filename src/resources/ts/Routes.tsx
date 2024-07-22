@@ -4,6 +4,8 @@ import Form from "./screen/Form"
 import View from "./View"
 import Detail from "./screen/detail"
 import Result from "./screen/result"
+import Mypage from "./screen/mypage"
+import Login from "./screen/login"
 import Item from "./components/Items"
 
 export const AppRoutes = () => {
@@ -13,6 +15,8 @@ export const AppRoutes = () => {
             <Route path="/detail/:id" element={<Detail />} />
             <Route path="/view" element={<View />} />
             <Route path="/done" element={<Result />} />
+            <Route path="/mypage" element={<Mypage />} />
+            <Route path="/login" element={<Login />} />
         </Routes>
     )
 }

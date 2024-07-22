@@ -112,8 +112,10 @@ const Item = () => {
     const [isLoggedIn, setLoggedIn] = useState(false);
 
     return (
-        <div>
-            <Header />
+        <div className="index">
+            <div className="main-header">
+                <Header />
+            </div>
             <ul className="shop-list">
                 {shops.map
                     ((shop: WtShop) => (
@@ -152,7 +154,7 @@ const Item = () => {
                                                     <button className="likeBtn"
                                                     onClick={() => handleClick(shop.id)}
                                                     >
-                                                        <MdFavorite  size="1.8em" />
+                                                        <MdFavorite color="#ff0000"  size="1.8em" />
                                                     </button>
 
                                                 );

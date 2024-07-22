@@ -1,0 +1,28 @@
+.result {
+    padding: 30px 50px;
+}
+.content{
+    width: 600px;
+    border-radius: 2px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 60px 0;
+    box-shadow: 2px 2px 4px gray;
+    text-align: center;
+}
+
+.result_m {
+    text-align: center;
+}
+
+.result_back {
+    color: white;
+    background-color: #0d53e6;
+    margin-top: 40px;
+    margin: 0 auto;
+    border-radius: 2px;
+    padding: 1px 3px;
+    border: none;
+    width: 50px;
+}

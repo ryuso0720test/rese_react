@@ -16,10 +16,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return response()->json([
         'data' => $user->id
     ],);
-    // return $request->user();
 });
+Route::get('/user/name', [UsersController::class, 'getAuthUserName']);
+
+
 Route::get('/shops', [ShopController::class, 'index']);
 Route::get('/shop/{id}', [ShopController::class, 'detail']);
+Route::get('/myPage/like', [ShopController::class, 'userFavorite']);
 
 Route::get('/areas', [AreaController::class, 'getAreaAll']);
 Route::get('/area/{id}', [AreaController::class, 'getArea']);
@@ -28,3 +31,5 @@ Route::get('/categories', [CategoryController::class, 'getCategoryAll']);
 Route::post('/likeUp', [LikeController::class, 'updateLike']);
 
 Route::post('/postReserve', [ReserveController::class, 'postReserve']);
+Route::get('/reserve', [ReserveController::class, 'getReserve']);
+Route::delete('/reserve/delete/{id}', [ReserveController::class, 'deleteReserve']);

@@ -77,12 +77,6 @@ const Detail = () => {
         })
     }
 
-    // const getShop = async () => {
-    //     const response = await fetch(`/api/shop/${selectId['id']}`);
-    //     const json = await response.json();
-    //     setShop(json.data);
-    // }
-
     useEffect(() => {
         // getShop();
     }, []);

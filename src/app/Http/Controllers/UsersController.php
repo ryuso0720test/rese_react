@@ -18,4 +18,15 @@ class UsersController extends Controller
             'data' => $id
         ],);
     }
+
+    function getAuthUserName()
+    {
+        $id = Auth::id();
+        $name = User::find($id)
+        ->value("name");
+
+        return response()->json([
+            'data' => $name
+        ],);
+    }
 }

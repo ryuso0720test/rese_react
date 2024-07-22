@@ -92,6 +92,12 @@ body {
 
 .navigation>ul>li {
     text-align: center;
+    text-decoration: none;
+    color: #0d53e6;
+    font-size: 16px;
+}
+.navigation>ul>li>form>a {
+    text-decoration: none;
 }
 
 .header-left {
