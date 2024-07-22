@@ -31,8 +31,12 @@ body {
     position: relative;
     width: 30px;
     height: 30px;
+    padding: 7px;
     overflow: hidden;
     z-index: 2;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 2px 2px 4px gray;
+    text-align: left;
 }
 
 .toggleButon>span {
@@ -43,17 +47,23 @@ body {
     bottom: 0;
     margin: auto;
     display: inline-block;
-    width: 100%;
     height: 2px;
     background-color: white;
 }
 
 .line-1 {
-    transform: translate(0, -10px);
+    transform: translate(-5px, -8px);
+    width: 30%;
 }
 
 .line-2 {
-    transform: translate(0, 10px);
+    transform: translate( 0px, 0px);
+    width: 70%;
+}
+
+.line-3 {
+    transform: translate(-7px, 8px);
+    width: 10%;
 }
 
 .toggleButon[aria-expanded="true"]>.line-1 {
