@@ -6,7 +6,7 @@
     justify-content: center;
 }
 
-.formContainer form {
+.formContainer .form {
     background-color: white;
     width: 50%;
     max-width: 450px;

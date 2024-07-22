@@ -5,6 +5,12 @@ import React from "react";
 import axios from 'axios';
 
 
+const http = axios.create({
+    baseURL: 'http://localhost:80/',
+    withCredentials: true,
+    withXSRFToken: true,
+});
+
 type Props = {
   open: boolean;
   id: string;
@@ -35,9 +41,31 @@ export const Navigation: FC<Props> = ({ open, id }) => {
     });
   };
 
-  const metaCsrfToken = document.head.querySelector("meta[name='csrf-token']") as HTMLMetaElement;
+  const loginClick = () => {
+    navigate('/login')
+  };
 
-  const csrfToken = useRef<string>(metaCsrfToken.content);
+  const logout = async () => {
+        http.post("/logout", {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(() => {
+          console.log('ログアウト成功');
+          handleNavLogin();
+        }).catch(function (error) {
+          console.log('ログアウト失敗');
+          handleNavLogin();
+        })
+  }
+  
+  const logoutClick = () => {
+        logout();
+    };
+
+  // const metaCsrfToken = document.head.querySelector("meta[name='csrf-token']") as HTMLMetaElement;
+
+  // const csrfToken = useRef<string>(metaCsrfToken.content);
 
 
   const fetchAuthUser = async () => {
@@ -61,24 +89,16 @@ export const Navigation: FC<Props> = ({ open, id }) => {
     <nav id={id} aria-hidden={!open} className="navigation">
       <ul>
         <li>Home</li>
-        <li>
-          <form name="logout" action="/logout" method="post">
-              <input type="hidden" name="_token" value={ csrfToken.current } />
-              <a onClick={handleNavLogin}>Logout</a>
-          </form>
-          {/* {isLoggedIn ? (
-            <form action="/logout" method="post">
-              <input type="hidden" name="_token" value={ csrfToken.current } />
-              <button onClick={handleLogout}>Logout</button>
-            </form>
-          ) : (
-              <form action="/login" method="post">
-                <input type="hidden" name="_token" value={ csrfToken.current } />
-                <button onClick={handleLogin}>Login</button>
-              </form>
-          )} */}
-        </li>
-        <li onClick={handleMypage}>Mypage</li>
+        {isLoggedIn ? (
+          <li><a onClick={() => logoutClick()}>Logout</a></li>
+        ) : (
+            <li><a href="">Registration</a></li>
+        )}
+        {isLoggedIn ? (
+          <li>ログイン中</li>
+        ) : (
+            <li><a onClick={() => loginClick()}>Login</a></li>
+        ) }
       </ul>
     </nav>
   );

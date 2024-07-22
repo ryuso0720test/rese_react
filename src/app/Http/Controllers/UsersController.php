@@ -29,4 +29,9 @@ class UsersController extends Controller
             'data' => $name
         ],);
     }
+
+    public function index()
+    {
+        return view('index');
+    }
 }

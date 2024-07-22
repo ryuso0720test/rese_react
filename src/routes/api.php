@@ -6,6 +6,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ReserveController;
 use Illuminate\Support\Facades\Log;
@@ -16,6 +17,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return response()->json([
         'data' => $user->id
     ],);
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/', [AuthController::class, 'index']);
 });
 Route::get('/user/name', [UsersController::class, 'getAuthUserName']);
 

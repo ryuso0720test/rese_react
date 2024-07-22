@@ -22,7 +22,6 @@
   <header class="header">
     <div class="header-left">
       <div id="header"></div>
-      <h1 class="header-title">Rase</h1>
     </div>
     @if (Auth::check())
     <div class="header-right">

@@ -115,3 +115,14 @@ body {
     border-radius: 3px;
     box-shadow: 6px 6px 6px 0px rgba(0, 0, 0, 0.45);
 }
+
+.logout {
+    border: none;
+    background-color: transparent;
+    color: #0d53e6;
+}
+
+#header {
+    margin-top: 30px;
+    margin-left: 40px;
+}
