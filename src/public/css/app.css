@@ -87,6 +87,8 @@ body {
     left: 0;
     height: 100vh;
     background-color: white;
+    font-size: 34px;
+    font-weight: bold;
 }
 
 .navigation[aria-hidden="false"] {

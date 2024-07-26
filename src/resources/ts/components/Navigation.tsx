@@ -94,16 +94,16 @@ export const Navigation: FC<Props> = ({ open, id }) => {
   return (
     <nav id={id} aria-hidden={!open} className="navigation">
       <ul>
-        <li onClick={() => homeClick()}>Home</li>
+        <li  style={ { fontSize: "24px" } } onClick={() => homeClick()}>Home</li>
         {isLoggedIn ? (
-          <li><a onClick={() => logoutClick()}>Logout</a></li>
+          <li onClick={() => logoutClick()} style={ { fontSize: "24px" } }>Logout</li>
         ) : (
-            <li onClick={() => registerClick()}>Registration</li>
+            <li style={ { fontSize: "24px" } } onClick={() => registerClick()}>Registration</li>
         )}
         {isLoggedIn ? (
-          <li onClick={() => handleMypage()} >Mypage</li>
+          <li style={ { fontSize: "24px" } } onClick={() => handleMypage()} >Mypage</li>
         ) : (
-            <li><a onClick={() => loginClick()}>Login</a></li>
+            <li style={ { fontSize: "24px" } } onClick={() => loginClick()}>Login</li>
         ) }
       </ul>
     </nav>
