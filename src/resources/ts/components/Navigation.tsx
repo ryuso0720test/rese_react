@@ -33,6 +33,10 @@ export const Navigation: FC<Props> = ({ open, id }) => {
     navigate('/login')
   };
 
+  const handleNavRegister = () => {
+    navigate('/register')
+  };
+
   const handleMypage = () => {
     navigate('/mypage', {
       state: {
@@ -44,9 +48,12 @@ export const Navigation: FC<Props> = ({ open, id }) => {
   const loginClick = () => {
     navigate('/login')
   };
+  const registerClick = () => {
+    navigate('/register')
+  };
 
   const logout = async () => {
-        http.post("/logout", {
+        http.post("/fortify/logout", {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -92,7 +99,7 @@ export const Navigation: FC<Props> = ({ open, id }) => {
         {isLoggedIn ? (
           <li><a onClick={() => logoutClick()}>Logout</a></li>
         ) : (
-            <li><a href="">Registration</a></li>
+            <li onClick={() => registerClick()}>Registration</li>
         )}
         {isLoggedIn ? (
           <li>ログイン中</li>

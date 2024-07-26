@@ -68,6 +68,7 @@ body {
 
 .toggleButon[aria-expanded="true"]>.line-1 {
     transform: translate(0, 0) rotate(-45deg);
+    width: 70%;
 }
 
 .toggleButon[aria-expanded="true"]>.line-2 {

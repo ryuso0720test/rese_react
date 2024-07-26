@@ -1,5 +1,5 @@
 import React from 'react';
-import Register from '../components/Register';
+import Register from './Register';
 import { createRoot } from 'react-dom/client';
 
 const csrf_token = document.head.querySelector('meta[name="csrf-token"]');

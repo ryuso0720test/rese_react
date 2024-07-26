@@ -9,8 +9,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index']);
 });
 Route::get('/', [AuthController::class, 'index']);
+Route::get('/login', [AuthController::class, 'index']);
+Route::get('/register', [AuthController::class, 'index']);
 
-Route::get('/detail/{id}', [ShopController::class, 'detail']);
+// Route::get('/detail/{id}', [ShopController::class, 'detail']);
 
 // Route::post('/register', [UsersController::class, 'store']);
 // Route::post('/logout', [UsersController::class, 'delete']);

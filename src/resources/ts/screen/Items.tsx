@@ -5,7 +5,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import Header from "./Header";
+import Header from "../components/Header";
 import { WtShop } from "../type/shop";
 
 const http = axios.create({

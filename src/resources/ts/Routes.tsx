@@ -6,8 +6,10 @@ import View from "./View"
 import Detail from "./screen/detail"
 import Result from "./screen/result"
 import Mypage from "./screen/mypage"
+import Thanks from "./screen/thanks"
 import Login from "./screen/login"
-import Item from "./components/Items"
+import Register from "./screen/registeration"
+import Item from "./screen/Items"
 import axios from 'axios';
 
 const fetchAuthUser = async () => {
@@ -29,7 +31,9 @@ export const AppRoutes = () => {
             <Route path="/view" element={<View />} />
             <Route path="/done" element={<Result />} />
             <Route path="/mypage" element={<Mypage />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/thanks" element={<Thanks />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/register" element={<Register />} />
         </Routes>
     )
 }
