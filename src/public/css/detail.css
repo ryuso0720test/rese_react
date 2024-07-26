@@ -7,8 +7,7 @@
 
 .left {
     width: 500px;
-    margin-right: 20%;
-
+    margin-right: 200px;
 }
 
 .right {
@@ -16,6 +15,8 @@
     width: 600px;
     background-color: #0d53e6;
     position: relative;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 2px 2px 4px gray;
 }
 
 .info {
@@ -24,7 +25,6 @@
 }
 
 .back {
-    border: solid 1px black;
     width: 30px;
     height: 30px;
 }
@@ -38,6 +38,10 @@
 .backBtn {
     width: 100%;
     height: 100%;
+    border: none;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 2px 2px 4px gray;
+    font-weight: bold;
 }
 
 .shop_name {
@@ -67,10 +71,13 @@
     background-color: white;
     width: 80%;
     display: flex;
-    justify-content: space-between;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 5px 5px 5px 5px;
+    position: relative;
+}
+.react-datepicker-wrapper {
+    width: 100%;
 }
 .reserve__date-input {
     width: 100%;
@@ -78,6 +85,9 @@
 }
 .reserve__date-icon {
     margin-top: 3px;
+    z-index: 1;
+    position: absolute;
+    right: 10px;
 }
 
 .reserve__time {
@@ -138,4 +148,5 @@
     padding: 15px 0 15px 0;
     position: absolute;
     bottom: 0;
+    border-radius: 2px 2px 2px 2px;
 }

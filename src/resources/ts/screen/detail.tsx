@@ -108,7 +108,9 @@ const Detail = () => {
                 </div>
                 <div className="info">
                     <div className="back">
-                        <button className='backBtn' onClick={handleBack}></button>
+                        <button className='backBtn' onClick={handleBack}>
+                            ＜
+                        </button>
                     </div>
                     <h2 className="shop_name">{selectId['name'] }</h2>
                 </div>
@@ -136,7 +138,7 @@ const Detail = () => {
                             dateFormat="yyyy/MM/dd"
                             onChange={(date: any) => dateChange(date)}
                         />
-                        <CiCalendar className='reserve__date-icon' />
+                        <CiCalendar className='reserve__date-icon'  onClick={() => DatePicker}/>
                     </div>
                     <div className="reserve__time">
                         <select className='time-sel' onChange={timeChange}>
