@@ -25,7 +25,7 @@ const Mypage = () => {
         navigate('/');
     }
     const location = useLocation();
-    const [userId, setUserId] = useState<number>(location.state as number)
+    const [userId, setUserId] = useState<number>(location.state.user_id as number)
     const [user, setUser] = useState();
     const [reserves, setReserve] = useState<WtReserve>([]);
     const [shops, setShops] = useState<WtShop>([]);
@@ -42,7 +42,8 @@ const Mypage = () => {
         setShops(json.data);
     }
     const getUserName = async () => {
-        const response = await fetch('/api/user/name');
+        console.log("user_id"+ userId);
+        const response = await fetch(`/api/user/name/${userId}`);
         const json = await response.json();
         setUser(json.data);
          console.log(json.data);

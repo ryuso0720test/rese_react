@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index']);
 });
 Route::post('/logout', [AuthController::class, 'destroy']);
-Route::get('/user/name', [UsersController::class, 'getAuthUserName']);
+Route::get('/user/name/{id}', [UsersController::class, 'getAuthUserName']);
 
 
 Route::get('/shops', [ShopController::class, 'index']);

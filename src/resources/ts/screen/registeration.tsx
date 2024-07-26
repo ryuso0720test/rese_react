@@ -18,7 +18,7 @@ function Register() {
     const initialValues = { name: "", email: "", password: "" };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(true);
+    const [isSubmit, setIsSubmit] = useState(false);
     const navigate = useNavigate();
 
     const register = async () => {
@@ -48,6 +48,7 @@ function Register() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
+        console.log(Object.keys(formErrors).length);
         if (Object.keys(formErrors).length === 0) {
             setIsSubmit(true);
             register();
@@ -55,6 +56,7 @@ function Register() {
     };
     const validate = (values) => {
         const errors = {};
+        const regex = /^[a-zA-Z0-9.?/-]{8,19}$/;
         if (!values.name) {
             errors.name = "ユーザー名を入力してください";
         }
@@ -63,9 +65,11 @@ function Register() {
         }
         if (!values.password) {
             errors.password = "パスワードを入力してください";
+        } else if (!regex.test(values.password)) {
+            errors.password = "8文字以上もしくは正しいフォーマットで入力してください";
         }
         if (!isSubmit) {
-            errors.public = "入力情報が正しくありません"
+            errors.public = "入力情報が正しくありません,もしくはメールアドレスが登録済みです"
         }
         return errors;
     };
@@ -113,7 +117,8 @@ function Register() {
                     />
                 </div>
                 <p className="errorMsg">{ formErrors.password}</p>
-                <button className="submitButton">登録</button>
+                        <button className="submitButton">登録</button>
+                        {Object.keys(formErrors).length === 0 && isSubmit}
             </div>
             </form>
         </div>

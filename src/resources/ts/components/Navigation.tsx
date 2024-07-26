@@ -33,10 +33,6 @@ export const Navigation: FC<Props> = ({ open, id }) => {
     navigate('/login')
   };
 
-  const handleNavRegister = () => {
-    navigate('/register')
-  };
-
   const handleMypage = () => {
     navigate('/mypage', {
       state: {
@@ -50,6 +46,9 @@ export const Navigation: FC<Props> = ({ open, id }) => {
   };
   const registerClick = () => {
     navigate('/register')
+  };
+  const homeClick = () => {
+    navigate('/')
   };
 
   const logout = async () => {
@@ -95,14 +94,14 @@ export const Navigation: FC<Props> = ({ open, id }) => {
   return (
     <nav id={id} aria-hidden={!open} className="navigation">
       <ul>
-        <li>Home</li>
+        <li onClick={() => homeClick()}>Home</li>
         {isLoggedIn ? (
           <li><a onClick={() => logoutClick()}>Logout</a></li>
         ) : (
             <li onClick={() => registerClick()}>Registration</li>
         )}
         {isLoggedIn ? (
-          <li>ログイン中</li>
+          <li onClick={() => handleMypage()} >Mypage</li>
         ) : (
             <li><a onClick={() => loginClick()}>Login</a></li>
         ) }

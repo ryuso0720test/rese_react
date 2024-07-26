@@ -19,6 +19,8 @@ class AuthController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        $request->session()->flush();
+        setcookie("cookie", "", time() - 30);
 
         Log::debug("aaaaa");
     }

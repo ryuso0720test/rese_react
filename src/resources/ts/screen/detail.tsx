@@ -74,6 +74,7 @@ const Detail = () => {
             handleDone();
         }).catch(function (error) {
             console.log('予約失敗');
+            navigate('/login');
         })
     }
 
