@@ -75,6 +75,10 @@ body {
     transform: translate(0, 0) rotate(45deg);
 }
 
+.toggleButon[aria-expanded="true"]>.line-3 {
+    display: none;
+}
+
 .navigation {
     display: none;
     align-items: center;
