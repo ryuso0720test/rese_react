@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import styles from "../../css/result.module.css";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
-import { useCookies } from 'react-cookie';
 import axios from 'axios';
 
 const http = axios.create({
@@ -18,15 +17,7 @@ const Thanks = () => {
     const handleBack = () => {
         navigate('/login');
     }
-    const [cookies, setCookie, removeCookie] = useCookies();
-    // const fetchAuthUser = async () => {
-    //     axios.get('/api/user').then(response => {
-    //       console.log('ユーザー情報取得成功');
-    //     })
-    //     .catch(() => {
-    //       console.log('ユーザー情報取得に失敗しました');
-    //     });
-    // }
+
     const logout = async () => {
         http.post("/api/logout", {
             headers: {
@@ -40,7 +31,6 @@ const Thanks = () => {
     }
     useEffect(() => {
         logout();
-        // fetchAuthUser();
     }, []);
 
     return (
