@@ -6,6 +6,7 @@ import { MdFavorite } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Header from "../components/Header";
+import Search from "../components/Search";
 import { WtShop } from "../type/shop";
 
 const http = axios.create({
@@ -15,7 +16,6 @@ const http = axios.create({
 });
 
 const Item = () => {
-
     const navigate = useNavigate();
     const handleDetail = (
         shop_id: number,
@@ -39,15 +39,10 @@ const Item = () => {
     }
 
     const [shops, setShops] = useState<WtShop>([]);
-    const [areas, setAreas] = useState([]);
-    const [categories, setCategories] = useState([]);
     const [userId, setUserId] = useState();
+    const initialSearch = { area_id: 0 , category_id: 0 ,word: 0 };
+    const [searchObj, setSearchObj] = useState(initialSearch);
 
-
-    const metaCsrfToken = document.head.querySelector("meta[name='csrf-token']") as HTMLMetaElement;
-
-
-    const csrfToken = useRef<string>(metaCsrfToken.content);
 
     const updateLike = async (shopId: number) => {
         const requestBody = {
@@ -60,7 +55,19 @@ const Item = () => {
             },
         }).then(() => {
             console.log('お気に入り更新成功');
-            getShops();
+
+            if (
+                searchObj.area_id == 0 &&
+                searchObj.category_id == 0 &&
+                searchObj.word == 0
+            ) {
+                getShops();
+            } else {
+                getShopSearch(
+                    searchObj
+                );
+            }
+            console.log(searchObj)
         }).catch(function (error) {
             console.log('お気に入り更新失敗');
         })
@@ -73,18 +80,35 @@ const Item = () => {
         console.log(json.data);
         setShops(json.data);
     }
-    // areas取得API
-    const getAreas = async () => {
-        const response = await fetch('http://localhost/api/areas');
-        const json = await response.json();
-        // console.log(json.data);
-        setAreas(json.data);
-    }
-    // category取得API
-    const getCategories = async () => {
-        const response = await fetch('http://localhost/api/categories');
-        const json = await response.json();
-        setCategories(json.data);
+    
+    const [formValues, setFormValues] = useState(0);
+    const handleValueChange = (
+        search: any
+    ) => {
+        setSearchObj(search)
+        console.log(searchObj)
+        getShopSearch(
+            search,
+        );
+    };
+
+    const getShopSearch = async (search: any) => {
+        console.log(search.inputWord);
+        if (search.inputWord == null ||
+            search.inputWord == undefined ||
+            search.inputWord == ""
+        ) {
+             const response =
+                await fetch(`/api/shops/${search.area_id}/${search.category_id}/${formValues}/`);
+            const json = await response.json();
+            setShops(json.data);
+            console.log(json.data);
+        } else {
+            const response =
+                await fetch(`/api/shops/${search.area_id}/${search.category_id}/${search.inputWord}/`);
+                const json = await response.json();
+                setShops(json.data);
+        }
     }
 
     const fetchAuthUser = async () => {
@@ -106,8 +130,6 @@ const Item = () => {
     useEffect(() => {
         fetchAuthUser();
         getShops();
-        getCategories();
-        getAreas();
     }, []);
     const [isLoggedIn, setLoggedIn] = useState(false);
 
@@ -115,6 +137,7 @@ const Item = () => {
         <div className="index">
             <div className="main-header">
                 <Header />
+                <Search handleValueChange={handleValueChange} />
             </div>
             <ul className="shop-list">
                 {shops.map

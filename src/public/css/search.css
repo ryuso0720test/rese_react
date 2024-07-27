@@ -1,20 +1,22 @@
-.search-content {
-    
-}
+/* .search-content {
+    width: 100%;
+} */
 
 .search-form {
-    width: 100%;
+    margin-right: 50px;
+    background-color: aliceblue;
 }
 
 .search-content input {
     border: none;
     height: 30px;
-    width: 30%;
+    padding-left: 4px;
     
 }
 .search__area {
     border: none;
     height: 30px;
+    width: 100px;
     border-right: solid 1px #d1cdcd;
 }
 

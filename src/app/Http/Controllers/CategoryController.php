@@ -8,7 +8,7 @@ class CategoryController extends Controller
 {
     function getCategoryAll()
     {
-        $areas = Category::all();
+        $areas = Category::all(['id', 'name']);
 
         return response()->json([
             'data' => $areas

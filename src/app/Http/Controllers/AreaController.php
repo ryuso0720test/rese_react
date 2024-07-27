@@ -9,7 +9,7 @@ class AreaController extends Controller
 {
     function getAreaAll()
     {
-        $areas = Area::all();
+        $areas = Area::all(['id','name']);
 
         return response()->json([
             'data' => $areas

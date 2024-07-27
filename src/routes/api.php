@@ -26,6 +26,7 @@ Route::get('/user/name/{id}', [UsersController::class, 'getAuthUserName']);
 
 
 Route::get('/shops', [ShopController::class, 'index']);
+Route::get('/shops/{area_id}/{category_id}/{word}', [ShopController::class, 'search']);
 Route::get('/shop/{id}', [ShopController::class, 'detail']);
 Route::get('/myPage/like', [ShopController::class, 'userFavorite']);
 
