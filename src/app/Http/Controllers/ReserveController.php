@@ -46,10 +46,7 @@ class ReserveController extends Controller
         foreach ($resArray as $resItem) {
             $resItem['index'] = $i++;
             array_push($resData, $resItem);
-            // Log::debug($resItem);
         };
-
-        // Log::debug($resData);
 
         return response()->json([
             'data' => $resData,

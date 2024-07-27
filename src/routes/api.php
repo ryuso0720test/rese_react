@@ -35,6 +35,7 @@ Route::get('/area/{id}', [AreaController::class, 'getArea']);
 Route::get('/categories', [CategoryController::class, 'getCategoryAll']);
 
 Route::post('/likeUp', [LikeController::class, 'updateLike']);
+Route::delete('/like/delete/{user_id}/{shop_id}', [LikeController::class, 'deleteLike']);
 
 Route::post('/postReserve', [ReserveController::class, 'postReserve']);
 Route::get('/reserve', [ReserveController::class, 'getReserve']);

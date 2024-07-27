@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Like;
 use Illuminate\Support\Facades\Log;
 
-use function PHPUnit\Framework\isNull;
-
 class LikeController extends Controller
 {
     function updateLike(Request $request)
@@ -34,7 +32,19 @@ class LikeController extends Controller
         } else {
             Like::where('id', $likeId)->delete();
         }
+    }
 
-        // $work_id = Like::query()
+    function deleteLike($user_id, $shop_id)
+    {
+        Log::debug($user_id);
+        Log::debug($shop_id);
+        $id = Like::query()
+            ->where('shop_id', $shop_id)
+            ->where('user_id', $user_id)
+            ->value('id');
+
+        $like = Like::find($id);
+
+        $like->delete();
     }
 }

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import "../../../public/css/register.css";
 import axios from 'axios';
 import Header from "../components//Header";
+import { useCookies } from 'react-cookie';
 
 const http = axios.create({
     baseURL: 'http://localhost:80/',
@@ -20,6 +21,7 @@ function Register() {
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const navigate = useNavigate();
+    const [cookies, setCookie, removeCookie] = useCookies();
 
     const register = async () => {
         const requestBody = {
@@ -33,6 +35,9 @@ function Register() {
             },
         }).then(() => {
             console.log('会員登録成功');
+            removeCookie('accesstoken', { path: '/thanks' }, { httpOnly: true });
+            removeCookie('refreshtoken', { path: '/thanks' }, { httpOnly: true });
+            console.log(cookies);
             navigate('/thanks')
         }).catch(function (error) {
             console.log('会員登録失敗');
@@ -48,11 +53,9 @@ function Register() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
+        setIsSubmit(true);
+        register();
         console.log(Object.keys(formErrors).length);
-        if (Object.keys(formErrors).length === 0) {
-            setIsSubmit(true);
-            register();
-        }
     };
     const validate = (values) => {
         const errors = {};

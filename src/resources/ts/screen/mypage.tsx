@@ -30,6 +30,27 @@ const Mypage = () => {
     const [reserves, setReserve] = useState<WtReserve>([]);
     const [shops, setShops] = useState<WtShop>([]);
 
+     const handleDetail = (
+        shop_id: number,
+        name: string,
+        category_name: string,
+        area_name: string,
+        overview: string,
+        image: string,
+    ) => {
+        navigate(`/Detail/${shop_id}`, {
+            state: {
+                id: shop_id,
+                user_id: userId,
+                name: name,
+                category_name: category_name,
+                area_name: area_name,
+                overview: overview,
+                image: image,
+            }
+        })
+    }
+
     // 取得API
     const getReserve = async () => {
         const response = await fetch('/api/reserve');
@@ -55,8 +76,16 @@ const Mypage = () => {
             getReserve();
         }).catch(function (error) {
             console.log('予約削除失敗');
-        });
-        
+        });       
+    }
+
+    const deleteLike = async (shop_id: number) => {
+        axios.delete("/api/like/delete/" + userId +"/"+shop_id).then(() => {
+            console.log('お気に入り削除成功');
+            getShops();
+        }).catch(function (error) {
+            console.log('お気に入り失敗');
+        });       
     }
 
     useEffect(() => {
@@ -70,6 +99,9 @@ const Mypage = () => {
 
     const handleDelete = (id: number) => {
         deleteReserve(id);
+    };
+    const handleLike = (id: number) => {
+        deleteLike(id);
     };
 
 
@@ -157,7 +189,7 @@ const Mypage = () => {
                                                     )} className="detail" >詳しくみる</button>
                                                 </form>
                                                 <button className="likeBtn"
-                                                    onClick={() => handleClick(shop.id)}>
+                                                    onClick={() => handleLike(shop.id)}>
                                                     <MdFavorite  size="1.8em" color="#ff0000" />
                                                 </button>
                                             </div>

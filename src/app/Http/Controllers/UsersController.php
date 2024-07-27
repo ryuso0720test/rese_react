@@ -22,7 +22,6 @@ class UsersController extends Controller
     function getAuthUserName($id)
     {
         Log::debug($id);
-        // $id = Auth::id();
         $name = User::query()
             ->where('id', $id)
             ->value("name");
