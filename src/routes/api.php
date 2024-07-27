@@ -31,7 +31,7 @@ Route::get('/shop/{id}', [ShopController::class, 'detail']);
 Route::get('/myPage/like', [ShopController::class, 'userFavorite']);
 
 Route::get('/areas', [AreaController::class, 'getAreaAll']);
-Route::get('/area/{id}', [AreaController::class, 'getArea']);
+
 Route::get('/categories', [CategoryController::class, 'getCategoryAll']);
 
 Route::post('/likeUp', [LikeController::class, 'updateLike']);

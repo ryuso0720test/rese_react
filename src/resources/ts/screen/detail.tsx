@@ -22,7 +22,6 @@ const http = axios.create({
 });
 
 const WrapDatePicker: any = DatePicker;
-// const WrapTimePicker: any = TimePicker;
 
 export type ShopUser = {
     id: number;
@@ -43,6 +42,7 @@ const Detail = () => {
     const [selectedPeople, setSelectedPeople] = useState<number>(1);
     const [selectedTime, setSelectedTime] = useState(time[0]);
     const [selectedDate, setSelectedDate] = useState();
+    const Today = new Date();
 
     const navigate = useNavigate();
 
@@ -137,6 +137,7 @@ const Detail = () => {
                             selected={startDate}
                             dateFormat="yyyy/MM/dd"
                             onChange={(date: any) => dateChange(date)}
+                            minDate={Today}
                         />
                         <CiCalendar className='reserve__date-icon'  onClick={() => DatePicker}/>
                     </div>
