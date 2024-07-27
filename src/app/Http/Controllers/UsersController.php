@@ -8,17 +8,6 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
-    function getAuthUser()
-    {
-        $id = Auth::id();
-
-        Log::debug($id);
-
-        return response()->json([
-            'data' => $id
-        ],);
-    }
-
     function getAuthUserName($id)
     {
         Log::debug($id);
