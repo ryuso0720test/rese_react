@@ -34,7 +34,6 @@ function Register() {
                 'Content-Type': 'application/json',
             },
         }).then(() => {
-            console.log('会員登録成功');
             removeCookie('accesstoken', { path: '/thanks' }, { httpOnly: true });
             removeCookie('refreshtoken', { path: '/thanks' }, { httpOnly: true });
             navigate('/thanks')

@@ -24,7 +24,6 @@ const Thanks = () => {
                 'Content-Type': 'application/json',
             },
         }).then(() => {
-          console.log('ログアウト成功');
         }).catch(function (error) {
           console.log('ログアウト失敗');
         })

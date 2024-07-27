@@ -55,8 +55,6 @@ const Item = () => {
                 'Content-Type': 'application/json',
             },
         }).then(() => {
-            console.log('お気に入り更新成功');
-
             if (
                 searchObj.area_id == 0 &&
                 searchObj.category_id == 0 &&
@@ -114,7 +112,6 @@ const Item = () => {
 
     const fetchAuthUser = async () => {
         axios.get('/api/user').then(response => {
-            console.log('通信成功');
             setUserId(response.data.data);
             setLoggedIn(true)
             })

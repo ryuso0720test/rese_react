@@ -37,16 +37,12 @@ const Detail = () => {
     const location = useLocation();
     const [selectId, setSelectId] = useState<ShopUser>(location.state as ShopUser)
     const [startDate, setStartDate] = useState(new Date());
-    const [value, onChange] = useState('10:00');
-
     const [selectedPeople, setSelectedPeople] = useState<number>(1);
     const [selectedTime, setSelectedTime] = useState(time[0]);
     const [selectedDate, setSelectedDate] = useState();
     const Today = new Date();
 
     const navigate = useNavigate();
-
-    const [shop, setShop] = useState([]);
 
     const handleBack = () => {
         navigate('/');
@@ -70,7 +66,6 @@ const Detail = () => {
                 'Content-Type': 'application/json',
             },
         }).then(() => {
-            console.log('予約成功');
             handleDone();
         }).catch(function (error) {
             console.log('予約失敗');

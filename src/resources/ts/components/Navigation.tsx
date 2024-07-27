@@ -57,7 +57,6 @@ export const Navigation: FC<Props> = ({ open, id }) => {
                 'Content-Type': 'application/json',
             },
         }).then(() => {
-          console.log('ログアウト成功');
           handleNavLogin();
         }).catch(function (error) {
           console.log('ログアウト失敗');
@@ -69,20 +68,14 @@ export const Navigation: FC<Props> = ({ open, id }) => {
         logout();
     };
 
-  // const metaCsrfToken = document.head.querySelector("meta[name='csrf-token']") as HTMLMetaElement;
-
-  // const csrfToken = useRef<string>(metaCsrfToken.content);
-
 
   const fetchAuthUser = async () => {
         axios.get('/api/user').then(response => {
-          console.log('ユーザー情報取得成功');
           console.log(response.data.data);
           setUserId(response.data.data);
           handleLogin();
         })
         .catch(() => {
-          console.log('ユーザー情報取得に失敗しました');
           handleLogout();
         });
     }

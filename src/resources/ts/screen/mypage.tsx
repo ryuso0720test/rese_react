@@ -72,7 +72,6 @@ const Mypage = () => {
 
     const deleteReserve = async (id: number) => {
         axios.delete("/api/reserve/delete/" + id).then(() => {
-            console.log('予約削除成功');
             getReserve();
         }).catch(function (error) {
             console.log('予約削除失敗');
@@ -81,7 +80,6 @@ const Mypage = () => {
 
     const deleteLike = async (shop_id: number) => {
         axios.delete("/api/like/delete/" + userId +"/"+shop_id).then(() => {
-            console.log('お気に入り削除成功');
             getShops();
         }).catch(function (error) {
             console.log('お気に入り失敗');

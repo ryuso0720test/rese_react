@@ -48,7 +48,6 @@ const Search = (props) => {
     // areas取得API
     const getAreas = async () => {
         axios.get('/api/areas').then(response => {
-          console.log('地域情報の取得成功');
           setAreas(response.data.data);
         })
         .catch(() => {
@@ -58,7 +57,6 @@ const Search = (props) => {
     // category取得API
     const getCategories = async () => {
         axios.get('/api/categories').then(response => {
-          console.log('カテゴリーの取得成功');
           setCategories(response.data.data);
         })
         .catch(() => {

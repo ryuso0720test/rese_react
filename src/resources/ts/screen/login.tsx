@@ -37,7 +37,6 @@ const Login = () => {
                 'Content-Type': 'application/json',
             },
         }).then(() => {
-            console.log('ログイン成功');
             navigate('/')
         }).catch(function (error) {
             console.log('ログイン失敗');
