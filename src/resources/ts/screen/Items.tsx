@@ -66,7 +66,6 @@ const Item = () => {
                     searchObj
                 );
             }
-            console.log(searchObj)
         }).catch(function (error) {
             console.log('お気に入り更新失敗');
         })
@@ -76,7 +75,6 @@ const Item = () => {
     const getShops = async () => {
         const response = await fetch('/api/shops/');
         const json = await response.json();
-        console.log(json.data);
         setShops(json.data);
     }
     

@@ -145,9 +145,9 @@ const Detail = () => {
                         </select>
                     </div>
                     <div className="reserve__people">
-                          <select className='people-sel' onChange={peopleChange}>
+                        <select className='people-sel' onChange={peopleChange}>
                             {people.map((p) => {
-                            return <option  value={p}>{p}人</option>;
+                            return <option key={p} value={p}>{p}人</option>;
                             })}
                             <p>人</p>
                         </select>

@@ -63,11 +63,9 @@ const Mypage = () => {
         setShops(json.data);
     }
     const getUserName = async () => {
-        console.log("user_id"+ userId);
         const response = await fetch(`/api/user/name/${userId}`);
         const json = await response.json();
         setUser(json.data);
-         console.log(json.data);
     }
 
     const deleteReserve = async (id: number) => {
@@ -92,8 +90,6 @@ const Mypage = () => {
         getUserName();
     }, []);
 
-    const handleClick = (shop_id: number) => {
-    };
 
     const handleDelete = (id: number) => {
         deleteReserve(id);

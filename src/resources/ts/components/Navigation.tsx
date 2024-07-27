@@ -71,7 +71,6 @@ export const Navigation: FC<Props> = ({ open, id }) => {
 
   const fetchAuthUser = async () => {
         axios.get('/api/user').then(response => {
-          console.log(response.data.data);
           setUserId(response.data.data);
           handleLogin();
         })
