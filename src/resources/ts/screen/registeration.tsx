@@ -19,7 +19,7 @@ function Register() {
     const initialValues = { name: "", email: "", password: "" };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
+    const [isSubmit, setIsSubmit] = useState(true);
     const navigate = useNavigate();
     const [cookies, setCookie, removeCookie] = useCookies();
 
@@ -37,7 +37,6 @@ function Register() {
             console.log('会員登録成功');
             removeCookie('accesstoken', { path: '/thanks' }, { httpOnly: true });
             removeCookie('refreshtoken', { path: '/thanks' }, { httpOnly: true });
-            console.log(cookies);
             navigate('/thanks')
         }).catch(function (error) {
             console.log('会員登録失敗');
@@ -54,8 +53,9 @@ function Register() {
         e.preventDefault();
         setFormErrors(validate(formValues));
         setIsSubmit(true);
-        register();
-        console.log(Object.keys(formErrors).length);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            register();
+         }
     };
     const validate = (values) => {
         const errors = {};
@@ -72,7 +72,7 @@ function Register() {
             errors.password = "8文字以上もしくは正しいフォーマットで入力してください";
         }
         if (!isSubmit) {
-            errors.public = "入力情報が正しくありません,もしくはメールアドレスが登録済みです"
+            errors.public = "入力情報が正しくありません"
         }
         return errors;
     };
