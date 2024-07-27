@@ -11,14 +11,4 @@ class AuthController extends Controller
     {
         return view('index');
     }
-
-    public function destroy(Request $request)
-    {
-        Auth::logout();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        $request->session()->flush();
-        setcookie("cookie", "", time() - 30);
-    }
 }

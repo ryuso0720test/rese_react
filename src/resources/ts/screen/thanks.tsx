@@ -18,16 +18,20 @@ const Thanks = () => {
         navigate('/login');
     }
 
-    const logout = async () => {
-        http.post("/api/logout", {
+    const forceLogout = async () => {
+        http.post("/fortify/logout", {
             headers: {
                 'Content-Type': 'application/json',
             },
         }).then(() => {
-          console.log('強制ログアウト成功');
+          console.log('ログアウト成功');
         }).catch(function (error) {
-          console.log('強制ログアウト失敗');
+          console.log('ログアウト失敗');
         })
+  }
+
+    const logout = async () => {
+        forceLogout();
     }
     useEffect(() => {
         logout();
