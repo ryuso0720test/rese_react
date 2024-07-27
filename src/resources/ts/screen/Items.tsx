@@ -42,6 +42,7 @@ const Item = () => {
     const [userId, setUserId] = useState();
     const initialSearch = { area_id: 0 , category_id: 0 ,word: 0 };
     const [searchObj, setSearchObj] = useState(initialSearch);
+    const [isLoggedIn, setLoggedIn] = useState(false);
 
 
     const updateLike = async (shopId: number) => {
@@ -114,8 +115,8 @@ const Item = () => {
     const fetchAuthUser = async () => {
         axios.get('/api/user').then(response => {
             console.log('通信成功');
-            console.log(response.data.data);
             setUserId(response.data.data);
+            setLoggedIn(true)
             })
             .catch(() => {
                 console.log('通信に失敗しました');
@@ -131,7 +132,6 @@ const Item = () => {
         fetchAuthUser();
         getShops();
     }, []);
-    const [isLoggedIn, setLoggedIn] = useState(false);
 
     return (
         <div className="index">
@@ -170,28 +170,32 @@ const Item = () => {
                                             shop.image,
                                         )} className="detail" >詳しくみる</button>
                                     </form>
-                                    { 
-                                        (() => {
-                                            if (shop.like == shop.id ) {
-                                                return (
+                                        {isLoggedIn ? (
+                                            (() => {
+                                                if (shop.like == shop.id ) {
+                                                    return (
+                                                        <button className="likeBtn"
+                                                        onClick={() => handleClick(shop.id)}
+                                                        >
+                                                            <MdFavorite color="#ff0000"  size="1.8em" />
+                                                        </button>
+
+                                                    );
+                                                } else {
+                                                    return (
                                                     <button className="likeBtn"
-                                                    onClick={() => handleClick(shop.id)}
-                                                    >
-                                                        <MdFavorite color="#ff0000"  size="1.8em" />
+                                                        onClick={() => handleClick(shop.id)}>
+                                                        <MdFavoriteBorder size="1.8em" />
                                                     </button>
+                                                    )
 
-                                                );
-                                            } else {
-                                                return (
-                                                <button className="likeBtn"
-                                                    onClick={() => handleClick(shop.id)}>
-                                                    <MdFavoriteBorder size="1.8em" />
-                                                </button>
-                                                )
+                                                }
+                                            })()
 
-                                            }
-                                        })()
-                                    }
+                                        ): (
+                                            <p></p>
+                                        ) }
+                                    
                                 </div>
                             </div>
                         </div>
