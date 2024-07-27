@@ -69,5 +69,3 @@
 
 ## ER 図
 ![新規 テキスト ドキュメント](https://github.com/user-attachments/assets/797606ef-21e4-4693-af24-3d22867b5a59)
-
-![alt text](<新規 テキスト ドキュメント.png>)
