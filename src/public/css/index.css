@@ -23,7 +23,6 @@
 .image {
     width: 250px;
     height: 150px;
-    background-color: aqua;
 }
 .image img {
     width: 100%;
@@ -49,12 +48,6 @@
     margin: 0;
 }
 
-/* .area {
-    width: 100%;
-}
-.category {
-    width: 100%;
-} */
 
 .item-status {
     display: flex;
